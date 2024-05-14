@@ -76,9 +76,10 @@ while carregamento:
         comida.apareca(tela)
 
         if jogador1.mascara.overlap(comida.mascara, (comida.pos_x - jogador1.jogador_pos_x,  comida. pos_y- jogador1.jogador_pos_y)):
-            
-            texto_ponto = fonte.render(f"Pontuação do jogador {pontuacao_jogador} ", True,(255,200,0))
-            tela.blit(texto_ponto,(10,10))
+            pontuacao_jogador = pontuacao_jogador +1
+     
+    texto_ponto = fonte.render(f"Pontuação do jogador {pontuacao_jogador+1} ", True,(255,200,0))
+    tela.blit(texto_ponto,(10,10))
   
     
        
