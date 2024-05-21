@@ -11,8 +11,21 @@ tela=pygame.display.set_mode((800, 500))
 jogador1 = Jogador("tuga.png", 100, 100, 420, 400)
 
 
+#MUSICA DO JOGO
 
+som_fundo = pygame.mixer.Sound("som/musicafundo.mp3")
          
+ #musica de fundo
+pygame.mixer.music.load("som/musicafundo.mp3")
+
+
+# Defina a repetição do som de fundo
+pygame.mixer.music.set_endevent(pygame.USEREVENT)
+
+# Inicie a reprodução do som de fundo
+pygame.mixer.music.play()
+
+
 lista_comida_boa = [Obstaculo("maca.png", 50,50,700,47),
                 Obstaculo("cereja.png", 50,50,700,118),
                 Obstaculo("pera.png", 50,50,700,188),
@@ -89,10 +102,12 @@ while carregamento:
 
 
 
+    
 
-
-
-
+    
+    
+    
+    #ESPECIAL DO JOGO
 
 
 
