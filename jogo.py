@@ -12,8 +12,8 @@ jogador1 = Jogador("tuga.png", 100, 100, 420, 400)
 
 
 #MUSICA DO JOGO
-
-som_fundo = pygame.mixer.Sound("som/musicafundo.mp3")
+som_pontp = pygame.mixer.Sound("som/som_ponto.mp3")
+som_fundo = pygame.mixer.Sound("som/somfundo.mp3")
          
  #musica de fundo
 pygame.mixer.music.load("som/musicafundo.mp3")
@@ -29,11 +29,12 @@ pygame.mixer.music.play()
 lista_comida_boa = [Obstaculo("maca.png", 50,50,700,47),
                 Obstaculo("cereja.png", 50,50,700,118),
                 Obstaculo("pera.png", 50,50,700,188),
-                Obstaculo("roma.png", 50,50,700,330),]
-                
+                Obstaculo("roma.png", 50,50,700,330),
+                Obstaculo("banana.png",50, 50, 700,200)]
 
 lista_comida_ruim =[Obstaculo("canudo.png", 50,50,700,0),
-                   Obstaculo("lampada.png", 50,50,700,0)]
+                   Obstaculo("lampada.png", 50,50,700,0),
+                   Obstaculo("garrafa.png",50,50,700,0)]
 
 #NOME DO JOGO
 pygame.display.set_caption('plus')
@@ -45,6 +46,8 @@ FUNDO = pygame.transform.scale(FUNDO,(800,500))
 #CARREGAMENTO DO JOGO
 carregamento = True
 
+    #PONTUAÇÃO JOGADOR
+pontuacao_jogador =0
 
 while carregamento:
     for evento in pygame.event.get():
@@ -57,8 +60,7 @@ while carregamento:
     fonte =pygame.font.SysFont("Arial black", 14,True)
     
     
-    #PONTUAÇÃO JOGADOR
-    pontuacao_jogador =0
+
     
     
     #EXIBIR TELA
@@ -85,21 +87,28 @@ while carregamento:
         #GANHAR PONTO
           #MOBILIDADE OBSTACULOS E "PONTOS"
     for comida in lista_comida_boa:
-        comida.movimenta()
         comida.apareca(tela)
+        comida.movimenta()
+        
 
         if jogador1.mascara.overlap(comida.mascara, (comida.pos_x - jogador1.jogador_pos_x,  comida. pos_y- jogador1.jogador_pos_y)):
-            pontuacao_jogador = pontuacao_jogador +1
-     
-    texto_ponto = fonte.render(f"Pontuação do jogador {pontuacao_jogador+1} ", True,(255,200,0))
+            pontuacao_jogador = pontuacao_jogador + 1
+            comida.pos_y = 500
+            pygame.mixer.music.load("som/somfundo.mp3")
+
+            
+        
+
+    texto_ponto = fonte.render(f"Pontuação do jogador {pontuacao_jogador} ", True,(255,200,0))
     tela.blit(texto_ponto,(10,10))
   
     
        
 
     #SUMIR COMIDA AO ENCOSTAR NO JOGADOR
-
-
+    
+    
+        
 
 
     
